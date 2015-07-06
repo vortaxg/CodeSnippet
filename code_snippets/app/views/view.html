@@ -1,0 +1,47 @@
+﻿<div class="jumbotron">
+    <div class="container">
+        <div class="navbar-left">
+            <p>
+                find any code snippet<br />you want
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="main main-wrap">
+        <div class="navbar-header">
+            <p class="navbar-brand">Cycle throught a list</p>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <button id="downloadBtn" class="btn btn-warning" data-ng-click="download()">
+                    Download
+                </button>
+            </form>
+        </div>
+        <div class="textAreaDescription clearfix">
+            <div class="pull-left">
+                <p>DEMO</p>
+            </div>
+            <div class="pull-right">
+                <span>Select source file:</span>
+                <select id="selectSourceFile"
+                        data-ng-model="selectedFile"
+                        data-ng-options="attachedFile.id as attachedFile.fileName for attachedFile in attachedFiles"></select>
+            </div>
+        </div>
+        <div class="form-group outputFileContentField">
+            <textarea class="form-control" id="fileContent" rows="40" data-ng-model="attachedFiles[filePosition].content" readonly></textarea>
+        </div>
+        <div class="outputFileContentFieldDescription">
+            <p>
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </p>
+        </div>
+    </div>
+</div>

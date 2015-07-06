@@ -1,0 +1,86 @@
+﻿<div class="jumbotron">
+    <div class="container">
+        <div class="navbar-left">
+            <p>
+                find any code snippet<br />you want
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="main main-wrap">
+        <form class="clearfix">
+            <div class="form-group">
+                <label for="snippetNameField">Snippet Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="snippetNameField"
+                       placeholder="Enter snippet name"
+                       data-ng-model="selectedSnippet.snippetName">
+            </div>
+            <div class="form-group">
+                <label for="descriptionField">Description</label>
+                <textarea class="form-control"
+                          id="descriptionField"
+                          rows="5"
+                          data-ng-model="selectedSnippet.description"></textarea>
+            </div>
+            <div class="form-group pull-left">
+                <label for="authorField">Author</label>
+                <input type="text"
+                       class="form-control"
+                       id="authorField"
+                       placeholder="Author"
+                       data-ng-model="selectedSnippet.authorName">
+            </div>
+            <div class="form-group pull-left form-group-date">
+                <label for="dateField">Date</label>
+                <input type="date"
+                       class="form-control"
+                       id="dateField"
+                       data-ng-model="selectedSnippet.creatingDate">
+            </div>
+        </form>
+        <h2>Snippet files</h2>
+        <table class="table" id="file-information">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Created at</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="upload-files-data-output">
+                <tr data-ng-repeat="obj in tempStorage">
+                    <td data-ng-bind="$index+1">ID</td>
+                    <td><a data-ng-href="#/view/{{$index}}" data-ng-bind="obj.fileName">Name</a></td>
+                    <td data-ng-bind="obj.creationDate |date : 'dd/MM/yyyy hh:mm'">Created at</td>
+                    <td>
+                        <button class="btn btn-default" data-ng-click="editItem($index)">Edit</button>
+                        <button class="btn btn-danger" data-ng-click="removeItem($index)">Destroy</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="addFileBtn btn btn-primary">
+            <span>Add new file</span>
+            <input type="file"
+                   class="upload"
+                   accept=".html,.js,.css" on-read-file />
+        </div>
+        <hr />
+        <div class="btn-group save-cancel-btn">
+            <button class="btn btn-default"
+                    id="saveSnippetBtn"
+                    data-ng-click="saveButton()">
+                Save
+            </button>
+            <button class="btn btn-default"
+                    id="cancelSnippetBtn"
+                    data-ng-click="cancelButton()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

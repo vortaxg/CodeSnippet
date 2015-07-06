@@ -1,0 +1,124 @@
+﻿<div class="jumbotron">
+    <div class="container">
+        <div class="clearfix">
+            <p class="pull-left">
+                find any code snippet<br />you want
+            </p>
+            <div class="pull-right">
+                <form class="form-inline">
+                    <input type="text" 
+                           placeholder="e.g jquery dragging" 
+                           class="form-control" 
+                           data-ng-model="searchCondition" 
+                           data-ng-change="search(searchCondition, 'full')">
+                    <span class="glyphicon glyphicon-search"></span>
+                </form>
+            </div>
+        </div>
+        <div class="pull-left">
+            <ul class="nav nav-tabs">
+                <li class="active" id="categoryMVC" data-toggle="tab">
+                    <a href="" data-ng-click="createFilteredStorage('MVC')">
+                        MVC
+                    </a>
+                </li>
+                <li data-toggle="tab">
+                    <a href="" id="categoryC#" data-ng-click="createFilteredStorage('C\#')">
+                        C#
+                    </a>
+                </li>
+                <li data-toggle="tab">
+                    <a href="" id="categoryJQuery" data-ng-click="createFilteredStorage('jQuery')">
+                        jQuery
+                    </a>
+                </li>
+                <li data-toggle="tab">
+                    <a href="" id="categoryJavascript" data-ng-click="createFilteredStorage('javascript')">
+                        javascript
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="nav-filters clearfix">
+            <div class="navbar-header navbar-left">
+                <p class="navbar-brand">Code Snippets below are related to jQuery tag</p>
+            </div>
+            <div class="navbar-right clearfix wrapper">
+                <select class="nav nav-pills pull-right"
+                        data-ng-model="itemsPerPage"
+                        data-ng-options="option as option.name for option in rowsPerPage"></select>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="dropdown">
+                        <a href="" class="btn btn-default dropdown-toggle"
+                           data-toggle="dropdown"
+                           role="button"
+                           aria-expanded="false">
+                            Sort By
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="" id="sortByName" data-ng-click="filterByOrder('snippetName')">by Name</a>
+                            </li>
+                            <li>
+                                <a href="" id="sortByAuthor" data-ng-click="filterByOrder('authorName')">by Author</a>
+                            </li>
+                            <li>
+                                <a href="" id="sortByDate" data-ng-click="filterByOrder('creatingDate')">by Date</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="pull-right">
+                    <input type="text"
+                           placeholder="Enter filter rule"
+                           class="form-control"
+                           id="searchFilterField"
+                           data-ng-model="localSearchCondition"
+                           data-ng-change="search(localSearchCondition)">
+                </form>
+            </div>
+        </div>
+        <table class="table tableOfSnipets">
+            <thead>
+                <tr>
+                    <th>
+                        <a href=""
+                           data-ng-click="filterByOrder('snippetName')">
+                            Snippet Name
+                        </a>
+                        <span class="sortorder"
+                              data-ng-show="predicate === 'snippetName'"
+                              data-ng-class="{reverse:reverse}">
+                        </span>
+                    </th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+                <tr data-ng-repeat="obj in paginationStorage | filter:limitTo:itemsPerPage.value">
+                    <td>
+                        <a href="#edit/{{obj.id}}" data-ng-bind="obj.snippetName"></a>
+                    </td>
+                    <td data-ng-bind="obj.description"></td>
+                    <td data-ng-bind="obj.authorName"></td>
+                    <td data-ng-bind="obj.creatingDate | date"></td>
+                </tr>
+            </tbody>
+        </table>
+        <nav class="text-center">
+            <pagination data-ng-model="currentPage"
+                        total-items="filteredStorage.length"
+                        items-per-page="itemsPerPage.value"
+                        max-size="maxSize"
+                        boundary-links="true">
+            </pagination>
+        </nav>
+    </div>
+</div>
