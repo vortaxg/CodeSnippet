@@ -2,15 +2,15 @@
     $routeProvider
         .when("/", {
             templateUrl: "/app/views/main.html",
-            controller: "MainController"
+            controller: "MainCtrl"
         })
        .when("/edit/:id", {
            templateUrl: "/app/views/edit.html",
-           controller: "EditController"
+           controller: "EditCtrl"
        })
        .when("/view/:id", {
            templateUrl: "/app/views/view.html",
-           controller: "ViewController"
+           controller: "ViewCtrl"
        })
        .otherwise({ redirectTo: "/" });
 }]);

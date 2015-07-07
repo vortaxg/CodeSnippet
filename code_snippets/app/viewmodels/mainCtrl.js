@@ -1,7 +1,7 @@
-﻿app.controller("MainController", ["$scope", "mainService", "$filter", "$parse",
-    function ($scope, mainService) {
+﻿app.controller("MainCtrl", ["$scope", "storageService", "toaster",
+    function ($scope, storageService, toaster) {
 
-        $scope.filteredStorage = mainService.createFilteredStorage();
+        $scope.filteredStorage = storageService.createFilteredStorage();
         var currentCategory;
 
         function updatePagination() {
@@ -12,7 +12,7 @@
 
         $scope.createFilteredStorage = function (selectedCategoryName) {
             currentCategory = selectedCategoryName;
-            $scope.filteredStorage = mainService.createFilteredStorage(currentCategory);
+            $scope.filteredStorage = storageService.createFilteredStorage(currentCategory);
             updatePagination();
         };
 
@@ -45,21 +45,22 @@
         $scope.$watch("itemsPerPage.value", updatePagination);
         $scope.$watch("currentPage + numPerPage", updatePagination);
 
-        $scope.filterByOrder = function (predicate) {
+        $scope.sortByOrder = function (predicate) {
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
-            $scope.filteredStorage = mainService.orderBy($scope.predicate, $scope.reverse);
+            $scope.filteredStorage = storageService.orderBy($scope.predicate, $scope.reverse);
             $scope.currentPage = 1;
             updatePagination();
         };
 
-        $scope.search = function (searchCondition, type) {
-            $scope.filteredStorage = mainService.search(searchCondition, type);
+        $scope.filterByTyppingData = function (searchCondition, type) {
+            $scope.filteredStorage = storageService.filterByPredicate(searchCondition, type);
             if (!searchCondition) {
-                $scope.filteredStorage = mainService.createFilteredStorage(currentCategory);
+                $scope.filteredStorage = storageService.createFilteredStorage(currentCategory);
             }
             $scope.currentPage = 1;
             updatePagination();
         }
+    
     }]);
 

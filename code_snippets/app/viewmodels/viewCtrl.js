@@ -1,11 +1,10 @@
-﻿app.controller("ViewController", ["$scope", "$routeParams", "viewService",
-    function ($scope, $routeParams, viewService) {
-
+﻿app.controller("ViewCtrl", ["$scope", "$routeParams", "storageService",
+    function ($scope, $routeParams, storageService) {
+        
     $scope.currentId = $routeParams.id;
-    $scope.attachedFiles = viewService.selectedSnippet();
+    $scope.attachedFiles = storageService.selectedSnippet();
     $scope.selectedFile = $scope.attachedFiles[$scope.currentId].id;
-
-   
+ 
     $scope.$watch("selectedFile", function () {
         try{
             for (var i in $scope.attachedFiles) {

@@ -8,7 +8,7 @@
                     var file = element[0].files;
                     scope.$apply(function () {
                         scope.tempStorage.push({
-                            'id': scope.getRandomId(1, 10),
+                            'id': getRandomId(scope.idStorage, 1, 20),
                             'fileName': file[0].name,
                             'creationDate': file[0].lastModifiedDate,
                             'content': reader.result
