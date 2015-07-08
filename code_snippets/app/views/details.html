@@ -16,14 +16,14 @@
                        class="form-control"
                        id="snippetNameField"
                        placeholder="Enter snippet name"
-                       data-ng-model="selectedSnippet.snippetName">
+                       data-ng-model="localCopyOfSelectedSnippet.snippetName">
             </div>
             <div class="form-group">
                 <label for="descriptionField">Description</label>
                 <textarea class="form-control"
                           id="descriptionField"
                           rows="5"
-                          data-ng-model="selectedSnippet.description"></textarea>
+                          data-ng-model="localCopyOfSelectedSnippet.description"></textarea>
             </div>
             <div class="form-group pull-left">
                 <label for="authorField">Author</label>
@@ -31,14 +31,14 @@
                        class="form-control"
                        id="authorField"
                        placeholder="Author"
-                       data-ng-model="selectedSnippet.authorName">
+                       data-ng-model="localCopyOfSelectedSnippet.authorName">
             </div>
             <div class="form-group pull-left form-group-date">
                 <label for="dateField">Date</label>
                 <input type="date"
                        class="form-control"
                        id="dateField"
-                       data-ng-model="selectedSnippet.creatingDate">
+                       data-ng-model="localCopyOfSelectedSnippet.creatingDate">
             </div>
         </form>
         <h2>Snippet files</h2>
@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody id="upload-files-data-output">
-                <tr data-ng-repeat="obj in tempStorage">
+                <tr data-ng-repeat="obj in localCopyOfAttachedFiles">
                     <td data-ng-bind="$index+1">ID</td>
                     <td><a data-ng-href="#/view/{{$index}}" data-ng-bind="obj.fileName">Name</a></td>
                     <td data-ng-bind="obj.creationDate |date : 'dd/MM/yyyy hh:mm'">Created at</td>
@@ -73,12 +73,12 @@
         <div class="btn-group save-cancel-btn">
             <button class="btn btn-default"
                     id="saveSnippetBtn"
-                    data-ng-click="saveButton()">
+                    data-ng-click="saveToStorage()">
                 Save
             </button>
             <button class="btn btn-default"
                     id="cancelSnippetBtn"
-                    data-ng-click="cancelButton()">
+                    data-ng-click="goToMainLocation()">
                 Cancel
             </button>
         </div>

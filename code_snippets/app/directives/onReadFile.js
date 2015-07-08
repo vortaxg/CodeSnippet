@@ -7,7 +7,7 @@
                 reader.onload = function () {
                     var file = element[0].files;
                     scope.$apply(function () {
-                        scope.tempStorage.push({
+                        scope.localCopyOfAttachedFiles.push({
                             'id': getRandomId(scope.idStorage, 1, 20),
                             'fileName': file[0].name,
                             'creationDate': file[0].lastModifiedDate,
@@ -15,7 +15,12 @@
                         });
                     });
                 };
-                reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                try {
+                    reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                    } catch (e) {
+                    scope.pop("error", "Error", e.message);
+                }
+                
             });
         }
     };

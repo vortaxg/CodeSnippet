@@ -1,7 +1,7 @@
 ﻿app.factory("storageService", ["snippets", "$filter", function (snippets, $filter) {
 
     var factory = {},
-        selectedSnippet = {},
+        localCopyOfSelectedSnippet = {},
         filteredStorage = [],
         storage = snippets.storage;
 
@@ -27,8 +27,7 @@
         return filter(selectedStorage, predicate, false);
     };
 
-    factory.orderBy = function (selector, reverse) {
-        var predicate = selector;
+    factory.orderByPredicate = function (predicate, reverse) {
         var orderBy = $filter("orderBy");
         if (reverse) {
             return filteredStorage.reverse();
@@ -38,37 +37,41 @@
     };
 
     factory.selectSnippetPosition = function (id) {
-        var currentId = id;
+        var currentId = id,
+            snippetPosition = 0;
         for (var key in storage) {
-            if (storage[key].id == currentId) {
-                return key;
+            if (storage.hasOwnProperty(key)) {
+                if (storage[key].id === +currentId) {
+                    snippetPosition= key;
+                }
             }
         }
+        return snippetPosition;
     };
 
-    factory.selectSnipet = function(position) {
-        var snippetPosition = position;
-        selectedSnippet = {
-            snippetName: storage[snippetPosition].snippetName,
-            description: storage[snippetPosition].description,
-            authorName: storage[snippetPosition].authorName,
-            creatingDate: storage[snippetPosition].creatingDate,
-            attachedFiles: storage[snippetPosition].attachedFiles
+    factory.makeLocalCopyOfSelectedSnippet = function (position) {
+        var selectedSnippet = storage[position];
+        localCopyOfSelectedSnippet = {
+            snippetName: selectedSnippet.snippetName,
+            description: selectedSnippet.description,
+            authorName: selectedSnippet.authorName,
+            creatingDate: selectedSnippet.creatingDate,
+            attachedFiles: selectedSnippet.attachedFiles
         }
-        return selectedSnippet;
+        return localCopyOfSelectedSnippet;
     };
 
-    factory.saveSelectedSnipet = function(position, snippetForSave, attachedFiles) {
-        var snippetPosition = position;
-        storage[snippetPosition].snippetName = snippetForSave.snippetName;
-        storage[snippetPosition].description = snippetForSave.description;
-        storage[snippetPosition].authorName = snippetForSave.authorName;
-        storage[snippetPosition].creatingDate = snippetForSave.creatingDate;
-        storage[snippetPosition].attachedFiles = attachedFiles;
+    factory.saveToStorage = function (position, snippetForSave, attachedFiles) {
+        var destinationSnippet = storage[position];
+        destinationSnippet.snippetName = snippetForSave.snippetName;
+        destinationSnippet.description = snippetForSave.description;
+        destinationSnippet.authorName = snippetForSave.authorName;
+        destinationSnippet.creatingDate = snippetForSave.creatingDate;
+        destinationSnippet.attachedFiles = attachedFiles;
     };
 
     factory.selectedSnippet = function () {
-        return selectedSnippet.attachedFiles;
+        return localCopyOfSelectedSnippet.attachedFiles;
     }
 
     return factory;

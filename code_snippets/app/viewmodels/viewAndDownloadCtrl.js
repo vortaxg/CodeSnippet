@@ -1,5 +1,5 @@
-﻿app.controller("ViewCtrl", ["$scope", "$routeParams", "storageService",
-    function ($scope, $routeParams, storageService) {
+﻿app.controller("ViewAndDownloadCtrl", ["$scope", "$routeParams", "storageService","toaster",
+    function ($scope, $routeParams, storageService, toaster) {
         
     $scope.currentId = $routeParams.id;
     $scope.attachedFiles = storageService.selectedSnippet();
@@ -12,8 +12,7 @@
                     $scope.filePosition = i;
             }
         } catch (e) {
-            //TODO: add toastr message for error
-            console.log(e);
+            $scope.pop("error", "Error", e.message);
         }
     });
 
@@ -32,5 +31,13 @@
         document.body.appendChild(a);
         a.click();
     }
-      
+    $scope.pop = function (type, title, textMessage) {
+        toaster.pop({
+            type: type,
+            title: title,
+            body: textMessage,
+            showCloseButton: true
+
+        });
+    };
 }]);

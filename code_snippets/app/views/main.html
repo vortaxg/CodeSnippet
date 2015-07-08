@@ -62,13 +62,13 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="" id="sortByName" data-ng-click="sortByOrder('snippetName')">by Name</a>
+                                <a href="" id="sortByName" data-ng-click="orderByPredicate('snippetName')">by Name</a>
                             </li>
                             <li>
-                                <a href="" id="sortByAuthor" data-ng-click="sortByOrder('authorName')">by Author</a>
+                                <a href="" id="sortByAuthor" data-ng-click="orderByPredicate('authorName')">by Author</a>
                             </li>
                             <li>
-                                <a href="" id="sortByDate" data-ng-click="sortByOrder('creatingDate')">by Date</a>
+                                <a href="" id="sortByDate" data-ng-click="orderByPredicate('creatingDate')">by Date</a>
                             </li>
                         </ul>
                     </li>
@@ -88,7 +88,7 @@
             <tr>
                 <th>
                     <a href=""
-                       data-ng-click="sortByOrder('snippetName')">
+                       data-ng-click="orderByPredicate('snippetName')">
                         Snippet Name
                     </a>
                     <span class="sortorder"
@@ -104,7 +104,7 @@
             <tbody id="output">
             <tr data-ng-repeat="obj in paginationStorage | filter:limitTo:itemsPerPage.value">
                 <td>
-                    <a href="#edit/{{obj.id}}" data-ng-bind="obj.snippetName"></a>
+                    <a href="#details/{{obj.id}}" data-ng-bind="obj.snippetName"></a>
                 </td>
                 <td data-ng-bind="obj.description"></td>
                 <td data-ng-bind="obj.authorName"></td>

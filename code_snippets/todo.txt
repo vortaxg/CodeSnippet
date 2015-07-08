@@ -1,13 +1,13 @@
 + 1) install resharper 8.2.3 trial version 
-2) rename files of controllers to add more explanation (fe. editSnippetController)
++2) rename files of controllers to add more explanation (fe. editSnippetController)
 +3) check string length of code
 + 4) href='javascript:;' check  http://javascript.ru/unsorted/why_href_js_is_bad
 + 5) remove unneeded files
-6) add angular logger support and functionality in viewController for try-catch (add message)
++ 6) add angular logger support and functionality in viewController for try-catch (add message)
 https://github.com/jirikavi/AngularJS-Toaster
 + 7) remove comments
-8) extend names of functions and variables to add more information
++8) extend names of functions and variables to add more information
 +9) move general functions to common.js (/app/common.js)
 + 10) services refactoring
-11) onReadFile add try-catch with toaster
++ 11) onReadFile add try-catch with toaster
 12) extend onReadFile to be more universal

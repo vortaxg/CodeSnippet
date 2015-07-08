@@ -1,4 +1,4 @@
-﻿app.controller("MainCtrl", ["$scope", "storageService", "toaster",
+﻿app.controller("OutputDataCtrl", ["$scope", "storageService", "toaster",
     function ($scope, storageService, toaster) {
 
         $scope.filteredStorage = storageService.createFilteredStorage();
@@ -45,10 +45,10 @@
         $scope.$watch("itemsPerPage.value", updatePagination);
         $scope.$watch("currentPage + numPerPage", updatePagination);
 
-        $scope.sortByOrder = function (predicate) {
+        $scope.orderByPredicate = function (predicate) {
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
-            $scope.filteredStorage = storageService.orderBy($scope.predicate, $scope.reverse);
+            $scope.filteredStorage = storageService.orderByPredicate($scope.predicate, $scope.reverse);
             $scope.currentPage = 1;
             updatePagination();
         };
