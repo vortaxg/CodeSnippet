@@ -1,5 +1,5 @@
-﻿app.controller("OutputDataCtrl", ["$scope", "storageService", "toaster",
-    function ($scope, storageService, toaster) {
+﻿app.controller("OutputDataCtrl", ["$scope", "storageService",
+    function ($scope, storageService) {
 
         $scope.filteredStorage = storageService.createFilteredStorage();
         var currentCategory;

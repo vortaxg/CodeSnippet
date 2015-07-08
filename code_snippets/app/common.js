@@ -1,5 +1,5 @@
 ﻿getRandomId = function (idStorage, minValue, maxValue) {
-         var id = 0,
+         var id,
              min = minValue || 1,
              max = maxValue || 1000;
          do {

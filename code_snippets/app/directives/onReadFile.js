@@ -1,6 +1,7 @@
 ﻿app.directive("onReadFile", function () {
     return {
         restrict: "A",
+        scope:"=",
         link: function (scope, element) {
             element.on("change", function (onChangeEvent) {
                 var reader = new FileReader();

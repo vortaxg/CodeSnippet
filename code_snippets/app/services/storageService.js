@@ -70,9 +70,9 @@
         destinationSnippet.attachedFiles = attachedFiles;
     };
 
-    factory.selectedSnippet = function () {
+    factory.returnAttachedFiles = function () {
         return localCopyOfSelectedSnippet.attachedFiles;
-    }
+    };
 
     return factory;
 }]);
