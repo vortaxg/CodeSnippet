@@ -61,6 +61,8 @@
             $scope.currentPage = 1;
             updatePagination();
         }
-    
+
+      
+      
     }]);
 

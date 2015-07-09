@@ -21,6 +21,7 @@ function ($scope, $routeParams, $location, storageService, toaster) {
         try {
             storageService.saveToStorage(snippetPosition, $scope.localCopyOfSelectedSnippet, $scope.localCopyOfAttachedFiles);
             $scope.localCopyOfSelectedSnippet = storageService.makeLocalCopyOfSelectedSnippet(snippetPosition);
+            
         } catch (e) {
             $scope.pop("error", "Error", e.message);
         }
@@ -46,6 +47,23 @@ function ($scope, $routeParams, $location, storageService, toaster) {
             showCloseButton: true
 
         });
+    };
+ 
+ /* $scope.getFileInformation = function (inputFile) {
+        $scope.localCopyOfAttachedFiles.push({
+            'id': getRandomId($scope.idStorage, 1, 20),
+            'fileName': inputFile.fileName,
+            'creationDate': inputFile.creationDate,
+            'content': inputFile.content
+        });
+  };*/
+    $scope.getFileInformationAlternative = function (fileName, creationDate, content) {
+      $scope.localCopyOfAttachedFiles.push({
+          'id': getRandomId($scope.idStorage, 1, 20),
+          'fileName': fileName,
+          'creationDate': creationDate,
+          'content': content
+      });
     };
 }]);
 

@@ -67,7 +67,10 @@
             <span>Add new file</span>
             <input type="file"
                    class="upload"
-                   accept=".html,.js,.css" on-read-file />
+                   accept=".html,.js,.css"
+                   on-read-file
+                   fn="getFileInformation"
+                   get-file-information-alternative="getFileInformationAlternative(fileName, creationDate, content)"/>
         </div>
         <hr />
         <div class="btn-group save-cancel-btn">

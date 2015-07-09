@@ -1,19 +1,18 @@
 ﻿app.directive("onReadFile", function () {
     return {
         restrict: "A",
-        scope:"=",
+        scope: {
+          //  callBackFunction: "=fn",
+            callBackMethod: "&getFileInformationAlternative"
+        },
         link: function (scope, element) {
             element.on("change", function (onChangeEvent) {
                 var reader = new FileReader();
                 reader.onload = function () {
                     var file = element[0].files;
                     scope.$apply(function () {
-                        scope.localCopyOfAttachedFiles.push({
-                            'id': getRandomId(scope.idStorage, 1, 20),
-                            'fileName': file[0].name,
-                            'creationDate': file[0].lastModifiedDate,
-                            'content': reader.result
-                        });
+                          scope.callBackMethod({ fileName: file[0].name, creationDate: file[0].lastModifiedDate, content: reader.result });
+            //            scope.callBackFunction({ fileName: file[0].name, creationDate: file[0].lastModifiedDate, content: reader.result });
                     });
                 };
                 try {

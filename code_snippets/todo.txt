@@ -10,4 +10,5 @@ https://github.com/jirikavi/AngularJS-Toaster
 +9) move general functions to common.js (/app/common.js)
 + 10) services refactoring
 + 11) onReadFile add try-catch with toaster
-12) extend onReadFile to be more universal
++12) extend onReadFile to be more universal
+13)$q
