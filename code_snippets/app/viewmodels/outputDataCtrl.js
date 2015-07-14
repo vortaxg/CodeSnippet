@@ -1,9 +1,15 @@
-﻿app.controller("OutputDataCtrl", ["$scope", "storageService",
-    function ($scope, storageService) {
+﻿app.controller("OutputDataCtrl", ["$scope", "storageService", "loadData",
+function ($scope, storageService, loadData) {
+    
+    var tempValue = loadData.getSnippets().then(function (data) {
+        console.log(data);
 
+    });
+    
+    
         $scope.filteredStorage = storageService.createFilteredStorage();
         var currentCategory;
-
+        
         function updatePagination() {
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage.value),
                 end = begin + $scope.itemsPerPage.value;
