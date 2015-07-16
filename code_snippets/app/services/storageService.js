@@ -1,24 +1,21 @@
-﻿app.factory("storageService", ["snippets", "$filter", "loadDataService",
-function (snippets, $filter, loadDataService) {
+﻿app.factory("storageService", ["$filter",
+function ($filter) {
 
-        var factory = {},
+    var factory = {},
         localCopyOfSelectedSnippet = {},
         filteredStorage = [],
-        storage = snippets.storage;
-
+        receiveData = false,
+        storage;
+   
     
-        factory.loadData = function () {
-            loadDataService.getData()
-            .then(function (data) {
-                
-                alert('good' + data[0].id);
-                }, function (error) {
-                alert('error data');
-            });
-        };
-
- 
-
+    factory.makeLocalStorage = function (inputData) {
+        if (receiveData === false) {
+            storage = inputData;
+            receiveData = true;
+        }
+        
+     }
+    
 
     factory.createFilteredStorage = function (category) {
         var categoryName = category || "MVC";

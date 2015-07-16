@@ -2,8 +2,8 @@
 function ($http, $q) {
     return {
         getData: function () {
-            return $http.get('app/services/phones.json').then(function (response) {
-                if (typeof response.data === 'object') {
+            return $http.get("app/services/snippets.json").then(function (response) {
+                if (typeof response.data === "object") {
                     return response.data;
                 } else {
                     return $q.reject(response.data);

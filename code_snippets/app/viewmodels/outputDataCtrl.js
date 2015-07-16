@@ -1,16 +1,20 @@
-﻿app.controller("OutputDataCtrl", ["$scope", "storageService",
-function ($scope, storageService) {
-
-
-    storageService.loadData();
-    console.log(storageService.loadData());
-
-
-    $scope.filteredStorage = storageService.createFilteredStorage();
+﻿app.controller("OutputDataCtrl", ["$scope", "storageService", "loadDataService",
+function ($scope, storageService, loadDataService) {
+   
+    (function () {
+        loadDataService.getData()
+        .then(function (data) {
+                storageService.makeLocalStorage(data);
+                $scope.createFilteredStorage();
+            }, function (error) {
+            alert("error data");
+            });
+        
+    })();
+    
     var currentCategory;
-
     function updatePagination() {
-        var begin = (($scope.currentPage - 1) * $scope.itemsPerPage.value),
+       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage.value),
             end = begin + $scope.itemsPerPage.value;
         $scope.paginationStorage = $scope.filteredStorage.slice(begin, end);
     }
@@ -18,6 +22,9 @@ function ($scope, storageService) {
     $scope.createFilteredStorage = function (selectedCategoryName) {
         currentCategory = selectedCategoryName;
         $scope.filteredStorage = storageService.createFilteredStorage(currentCategory);
+
+        $scope.$watch("itemsPerPage.value", updatePagination);
+        $scope.$watch("currentPage + numPerPage", updatePagination);
         updatePagination();
     };
 
@@ -47,8 +54,6 @@ function ($scope, storageService) {
     $scope.predicate = "snippetName";
     $scope.reverse = true;
 
-    $scope.$watch("itemsPerPage.value", updatePagination);
-    $scope.$watch("currentPage + numPerPage", updatePagination);
 
     $scope.orderByPredicate = function (predicate) {
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;

@@ -7,7 +7,7 @@ function ($scope, $routeParams, $location, storageService, toaster) {
     $scope.localCopyOfSelectedSnippet = storageService.makeLocalCopyOfSelectedSnippet(snippetPosition);
     $scope.localCopyOfAttachedFiles = [];
     $scope.idStorage = [];
-
+    $scope.localCopyOfSelectedSnippet.creatingDate = new Date($scope.localCopyOfSelectedSnippet.creatingDate);
     (function () {
         for (var key in $scope.localCopyOfSelectedSnippet.attachedFiles) {
             if ($scope.localCopyOfSelectedSnippet.attachedFiles.hasOwnProperty(key)) {
