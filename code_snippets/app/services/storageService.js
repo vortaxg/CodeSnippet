@@ -17,7 +17,7 @@ function ($filter) {
      }
     
 
-    factory.createFilteredStorage = function (category) {
+   /* factory.createFilteredStorage = function (category) {
         var categoryName = category || "MVC";
         filteredStorage = [];
         for (var i = 0; i < storage.length; i++) {
@@ -26,6 +26,12 @@ function ($filter) {
             }
         }
         return filteredStorage;
+    };
+    */
+    factory.createFilteredStorage = function (category) {
+        return storage.filter(function (snippet) {
+            return snippet.categoryName === (category || "MVC");
+        });
     };
 
     factory.filterByPredicate = function (predicate, type) {
