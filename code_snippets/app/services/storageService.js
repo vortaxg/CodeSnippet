@@ -28,10 +28,12 @@ function ($filter) {
         return filteredStorage;
     };
     */
+
     factory.createFilteredStorage = function (category) {
-        return storage.filter(function (snippet) {
+        filteredStorage = storage.filter(function (snippet) {
             return snippet.categoryName === (category || "MVC");
         });
+        return filteredStorage;
     };
 
     factory.filterByPredicate = function (predicate, type) {
