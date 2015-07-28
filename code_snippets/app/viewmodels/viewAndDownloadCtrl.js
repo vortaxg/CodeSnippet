@@ -40,7 +40,6 @@
                 title: title,
                 body: textMessage,
                 showCloseButton: true
-
             });
         };
     }]);

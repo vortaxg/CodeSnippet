@@ -6,29 +6,14 @@ function ($filter) {
         filteredStorage = [],
         receiveData = false,
         storage;
-   
     
     factory.makeLocalStorage = function (inputData) {
         if (receiveData === false) {
             storage = inputData;
             receiveData = true;
         }
-        
      }
     
-
-   /* factory.createFilteredStorage = function (category) {
-        var categoryName = category || "MVC";
-        filteredStorage = [];
-        for (var i = 0; i < storage.length; i++) {
-            if (storage[i].categoryName === categoryName) {
-                filteredStorage.push(storage[i]);
-            }
-        }
-        return filteredStorage;
-    };
-    */
-
     factory.createFilteredStorage = function (category) {
         filteredStorage = storage.filter(function (snippet) {
             return snippet.categoryName === (category || "MVC");
@@ -93,6 +78,5 @@ function ($filter) {
     factory.returnAttachedFiles = function () {
         return localCopyOfSelectedSnippet.attachedFiles;
     };
-
     return factory;
 }]);

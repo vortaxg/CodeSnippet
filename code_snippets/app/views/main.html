@@ -1,15 +1,15 @@
 ﻿<div class="jumbotron">
-    <div class="container">
+  <div class="container">
         <div class="clearfix">
             <p class="pull-left">
-                find any code snippet<br />you want
+                find any code snippet<br/>you want
             </p>
             <div class="pull-right">
                 <form class="form-inline">
-                    <input type="text" 
-                           placeholder="e.g jquery dragging" 
-                           class="form-control" 
-                           data-ng-model="searchCondition" 
+                    <input type="text"
+                           placeholder="e.g jquery dragging"
+                           class="form-control"
+                           data-ng-model="searchCondition"
                            data-ng-change="filterByTyppingData(searchCondition, 'full')">
                     <span class="glyphicon glyphicon-search"></span>
                 </form>
@@ -17,23 +17,23 @@
         </div>
         <div class="pull-left">
             <ul class="nav nav-tabs">
-                <li class="active" id="categoryMVC" data-toggle="tab">
-                    <a href="" data-ng-click="createFilteredStorage('MVC')">
+                <li class="active" data-toggle="tab">
+                    <a href="" data-ng-click="choiceTab('MVC')">
                         MVC
                     </a>
                 </li>
                 <li data-toggle="tab">
-                    <a href="" id="categoryC#" data-ng-click="createFilteredStorage('C\#')">
+                    <a href="" id="categoryC#" data-ng-click="choiceTab('C\#')">
                         C#
                     </a>
                 </li>
                 <li data-toggle="tab">
-                    <a href="" id="categoryJQuery" data-ng-click="createFilteredStorage('jQuery')">
+                    <a href="" id="categoryJQuery" data-ng-click="choiceTab('jQuery')">
                         jQuery
                     </a>
                 </li>
                 <li data-toggle="tab">
-                    <a href="" id="categoryJavascript" data-ng-click="createFilteredStorage('javascript')">
+                    <a href="" id="categoryJavascript" data-ng-click="choiceTab('javascript')">
                         javascript
                     </a>
                 </li>
@@ -62,13 +62,13 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="" id="sortByName" data-ng-click="orderByPredicate('snippetName')">by Name</a>
+                                <a href="" data-ng-click="orderByPredicate('snippetName')">by Name</a>
                             </li>
                             <li>
-                                <a href="" id="sortByAuthor" data-ng-click="orderByPredicate('authorName')">by Author</a>
+                                <a href=""data-ng-click="orderByPredicate('authorName')">by Author</a>
                             </li>
                             <li>
-                                <a href="" id="sortByDate" data-ng-click="orderByPredicate('creatingDate')">by Date</a>
+                                <a href="" data-ng-click="orderByPredicate('creatingDate')">by Date</a>
                             </li>
                         </ul>
                     </li>
@@ -77,7 +77,6 @@
                     <input type="text"
                            placeholder="Enter filter rule"
                            class="form-control"
-                           id="searchFilterField"
                            data-ng-model="localSearchCondition"
                            data-ng-change="filterByTyppingData(localSearchCondition)">
                 </form>
