@@ -8,6 +8,7 @@ function ($scope, $routeParams, $location, storageService, toaster) {
     $scope.localCopyOfAttachedFiles = [];
     $scope.idStorage = [];
     $scope.localCopyOfSelectedSnippet.creatingDate = new Date($scope.localCopyOfSelectedSnippet.creatingDate);
+
     (function () {
         for (var key in $scope.localCopyOfSelectedSnippet.attachedFiles) {
             if ($scope.localCopyOfSelectedSnippet.attachedFiles.hasOwnProperty(key)) {
@@ -48,14 +49,6 @@ function ($scope, $routeParams, $location, storageService, toaster) {
         });
     };
  
- /* $scope.getFileInformation = function (inputFile) {
-        $scope.localCopyOfAttachedFiles.push({
-            'id': getRandomId($scope.idStorage, 1, 20),
-            'fileName': inputFile.fileName,
-            'creationDate': inputFile.creationDate,
-            'content': inputFile.content
-        });
-  };*/
     $scope.getFileInformation = function (fileName, creationDate, content) {
       $scope.localCopyOfAttachedFiles.push({
           'id': getRandomId($scope.idStorage, 1, 20),
