@@ -28,14 +28,22 @@ function ($scope, storageService, loadDataService) {
     };
 
     $scope.rowsPerPage = [
-            {   value: 10,
-                name: "View 10 items per page" },
-            {   value: 20,
-                name: "View 20 items per page" },
-            {   value: 50,
-                name: "View 50 items per page" },
-            {   value: 100,
-                name: "View 100 items per page" }
+            {
+                value: 10,
+                name: "View 10 items per page"
+            },
+            {
+                value: 20,
+                name: "View 20 items per page"
+            },
+            {
+                value: 50,
+                name: "View 50 items per page"
+            },
+            {
+                value: 100,
+                name: "View 100 items per page"
+            }
     ];
 
     $scope.itemsPerPage = $scope.rowsPerPage[0];

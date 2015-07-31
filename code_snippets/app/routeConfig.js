@@ -1,4 +1,4 @@
-﻿app.config(["$routeProvider",function ($routeProvider) {
+﻿app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "/app/views/main.html",

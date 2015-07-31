@@ -103,7 +103,7 @@
             <tbody id="output">
             <tr data-ng-repeat="obj in paginationStorage | filter:limitTo:itemsPerPage.value">
                 <td>
-                    <a href="#details/{{obj.id}}" data-ng-bind="obj.snippetName"></a>
+                    <a href="#details/{{obj.id}}" data-ng-bind="::obj.snippetName"></a>
                 </td>
                 <td data-ng-bind="obj.description"></td>
                 <td data-ng-bind="obj.authorName"></td>

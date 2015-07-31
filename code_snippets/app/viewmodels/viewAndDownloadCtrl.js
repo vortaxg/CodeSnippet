@@ -2,7 +2,6 @@
     function ($scope, $routeParams, storageService, toaster) {
 
         var currentId = $routeParams.id;
-
         $scope.attachedFiles = storageService.returnAttachedFiles();
         $scope.selectedFile = $scope.attachedFiles[currentId].id;
 

@@ -39,13 +39,13 @@ function ($scope, $routeParams, $location, storageService, toaster) {
         var link = "view/" + index;
         $location.path(link);
     }
+
     $scope.pop = function (type, title, textMessage) {
         toaster.pop({
             type: type,
             title: title,
             body: textMessage,
             showCloseButton: true
-
         });
     };
  

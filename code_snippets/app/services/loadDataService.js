@@ -11,7 +11,6 @@ function ($http, $q) {
             }, function (response) {
                 return $q.reject(response.data);
             });
-
         }
     }
 }]);
