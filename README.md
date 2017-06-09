@@ -1,2 +1,2 @@
 # CodeSnippet
-readme
+readme README
